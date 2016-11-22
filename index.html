@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+    <link href="assets/css/proxima-nova.css" rel="stylesheet" />
+    <link href="assets/css/normalize.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="rateBox">
+      <div id="lol"></div>
+    </div>
+
+    <script>
+      /* globals document, require */
+      "use strict";
+
+      const ipcRenderer = require('electron').ipcRenderer;
+      ipcRenderer.send('fetch', true);
+
+      ipcRenderer.on('fetched', (event, data) => {
+        document.querySelector('#lol').innerHTML = data.status;
+      });
+    </script>
+  </body>
+</html>
