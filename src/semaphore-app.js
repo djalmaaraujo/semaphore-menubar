@@ -13,10 +13,10 @@ class Semaphore {
 
   dispatch(event, data) {
     this.notifier.notify(data);
-    this.sendEventToWindow(event, data);
+    this.sendToBrowser(event, data);
   }
 
-  sendEventToWindow(event, data) {
+  sendToBrowser(event, data) {
     event.sender.send(EVENT_FETCHED, {
       status: data.status.toLowerCase()
     });

@@ -6,7 +6,7 @@
 module.exports = {
   preloadWindow: true,
   debug: true,
-  width: 600,
-  height: 333,
-  showDockIcon: true
+  width: 300,
+  height: 300,
+  showDockIcon: false
 };
