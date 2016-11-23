@@ -5,22 +5,37 @@
     <title>Hello World!</title>
     <link href="assets/css/normalize.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
   <body>
-    <img src="assets/images/semaphore.png" />
-    <h1>No UI Available yet.</h1>
-    <p>This version will send you notifications and that's all.</p>
+    <div id="app">
+      <!-- Configuration State -->
+      <section v-show="appState === 'setup'">
+        <img src="./assets/images/semaphore.png" />
+        <input type="text" v-model="formToken" placeholder="Paste your token here" />
 
-    <script>
-      /* globals document, require */
-      "use strict";
+        <button type="button" v-on:click="saveToken">Save</button>
+      </section>
+      <!-- Configuration State -->
 
-      const ipcRenderer = require('electron').ipcRenderer;
-      ipcRenderer.send('fetch', true);
+      <!-- Saved State -->
+      <section v-show="appState === 'loading'">
+        <img src="./assets/images/semaphore.png" />
+        <p>Loading your data...</p>
+      </section>
+      <!-- Saved State -->
 
-      ipcRenderer.on('fetched', (event, data) => {
-        document.querySelector('#lol').innerHTML = data.status;
-      });
-    </script>
+      <!-- List State -->
+      <section v-show="appState === 'list'">
+        <ul class="projects">
+          <li v-for="item in projects">
+            <img :src="'assets/images/semaphore_' + item.branches[0].result + '.png'" alt="Build Status" width="40" /> <strong>{{ item.owner }}/{{ item.name }}</strong>
+          </li>
+        </ul>
+      </section>
+      <!-- List State -->
+    </div>
+
+    <script src="src/ui.js"></script>
   </body>
 </html>

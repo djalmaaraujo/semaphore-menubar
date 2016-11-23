@@ -4,11 +4,14 @@
   "main": "main.js",
   "dependencies": {
     "is-online": "^5.1.2",
+    "lodash": "^4.17.2",
     "menubar": "^5.1.0",
     "node-notifier": "^4.6.1",
-    "socket.io-client": "^1.6.0"
+    "socket.io-client": "^1.6.0",
+    "superagent": "^3.0.0"
   },
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.36.0",
     "standard": "^4.5.3"

@@ -47,7 +47,7 @@ class Notifier {
   }
 
   getIcon(status) {
-    return path.join(__dirname, "../assets/images/semaphore_" + status + ".png");
+    return path.join(__dirname, "../assets/images/statuses/icon-deploy-" + status + ".png");
   }
 }
 

@@ -8,8 +8,8 @@ const menubar = require("menubar");
 const Settings = require("./src/settings");
 const socket = require("socket.io-client")(Settings.get("sockerServer"));
 const Semaphore = require("./src/semaphore-app");
-const WindowConfig = require("./src/window");
-const mb = menubar(WindowConfig);
+const ElectronConfig = require("./src/electron");
+const mb = menubar(ElectronConfig);
 
 const EVENT_FETCH = "fetch";
 const EVENT_SERVER_BUILD = "build";
@@ -18,6 +18,7 @@ mb.on("ready", () => {
   let app = new Semaphore();
 
   mb.showWindow();
+  mb.window.openDevTools();
 
   ipcMain.on(EVENT_FETCH, (event) => {
     socket.on(EVENT_SERVER_BUILD, function(data) {
