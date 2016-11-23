@@ -3,7 +3,20 @@
 
 "use strict";
 
-const STORAGE_TOKEN_NAME = "semaphoreUserToken";
+// Storage for:
+//
+// receiveNotifications: true,
+// playSounds: true,
+// userToken: SDJASDJH
+// projects: []
+// projectsUpdatedAt: new Date()
+//
+
+const Config = require('electron-config');
+const cfg = new Config();
+
+console.log(cfg.path);
+
 const STATUES_PROGRESS = {
   passed: 100,
   failed: 0,
@@ -19,12 +32,10 @@ const NOTIFICATION_TYPES = {
 };
 
 const SETTINGS = {
-  playSounds: true,
   soundName: "Blow",
   sockerServer: "https://semaphorewatcherserver.herokuapp.com/",
   apiUrl: "https://semaphoreci.com/api/v1/",
   whereIsMyTokenUrl: "https://semaphoreci.com/users/edit",
-  receiveNotifications: true,
   STATUES_PROGRESS: STATUES_PROGRESS,
   NOTIFICATION_TYPES: NOTIFICATION_TYPES,
   window: {
@@ -42,21 +53,27 @@ class Settings {
   }
 
   get(setting) {
-    return this.database[setting];
+    if (this.database.hasOwnProperty(setting) === true) {
+      return this.database[setting];
+    } else {
+      return cfg.get(setting);
+    }
   }
 
   set(setting, value) {
-    this.database[setting] = value;
+    if (this.database.hasOwnProperty(setting) === true) {
+      this.database[setting] = value;
+    } else {
+      cfg.set(setting, value);
+    }
   }
 
-  getToken() {
-    let token = localStorage.getItem(STORAGE_TOKEN_NAME);
-
-    return ((token !== null) && (token !== "")) ? token : undefined;
+  has(setting) {
+    return cfg.has(setting);
   }
 
-  setToken(token) {
-    localStorage.setItem(STORAGE_TOKEN_NAME, token);
+  delete(setting) {
+    return cfg.delete(setting);
   }
 }
 

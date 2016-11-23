@@ -9,25 +9,8 @@
   </head>
   <body>
     <div id="app">
-      <!-- Configuration State -->
-      <section class="state__setup" v-show="appState === 'setup'">
-        <img src="./assets/images/semaphore.png" class="state__setupLogo" />
-
-        <h1 class="state__setupTitle">Hello!</h1>
-        <h2 class="state__setupSubTitle">Sign In via User <span>TOKEN</span></h2>
-
-        <form v-on:submit="saveToken">
-          <input type="text" v-model="formToken" placeholder="Paste your token here" class="state__setupTokenInput" required />
-
-          <button class="state__setupSubmit" type="submit" >Sign in</button>
-        </form>
-
-        <a v-on:click="openTokenUrl" href="#" class="state__setupTokenLink">Where's my token?</a>
-      </section>
-      <!-- Configuration State -->
-
       <!-- Loading State -->
-      <section class="state__loading" v-show="appState === 'loading'">
+      <section class="state state__loading" v-bind:class="{ show: !appState }">
         <div class="state_loadingContent">
           <img src="./assets/images/semaphore-gear.png" class="state__loadingLogo" />
           <p class="state__loadingText">Loading your projects...</p>
@@ -35,8 +18,25 @@
       </section>
       <!-- Loading State -->
 
+      <!-- Configuration State -->
+      <section class="state state__setup" v-bind:class="{ show: appState === 'setup' }">
+        <img src="./assets/images/semaphore.png" class="state__setupLogo" />
+
+        <h1 class="state__setupTitle">Hello!</h1>
+        <h2 class="state__setupSubTitle">Sign In via User <span>TOKEN</span></h2>
+
+        <form v-on:submit="saveToken">
+          <input type="text" v-model="formToken" placeholder="Paste your token here" class="state__setupTokenInput" required />
+          <small class="state__setupTokenInputMessage" v-show="setupMessage">{{ setupMessage }}</small>
+          <button class="state__setupSubmit" type="submit" >Sign in</button>
+        </form>
+
+        <a v-on:click="openTokenUrl" href="#" class="state__setupTokenLink">Where's my token?</a>
+      </section>
+      <!-- Configuration State -->
+
       <!-- List State -->
-      <section class="state__projectList" v-show="appState === 'list'">
+      <section class="state state__projectList" v-bind:class="{ show: appState === 'list' }">
         <section class="state__projectListHeader">
           <h1 class="state__projectListHeaderTitle">Your Projects</h1>
           <div class="state__projectListHeaderButton">

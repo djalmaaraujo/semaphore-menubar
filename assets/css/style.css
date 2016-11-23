@@ -26,11 +26,19 @@ img {
   border: 0;
 }
 
+.state {
+  display: none;
+}
+
 .state__setup {
   position: relative;
   padding: 30px;
   text-align: center;
   background-color: #f2f2e9;
+}
+
+.state.state__setup.show {
+  display: block;
 }
 
 .state__setupLogo {
@@ -72,6 +80,13 @@ img {
   border-radius: 3px;
 }
 
+.state__setupTokenInputMessage {
+  font-size: 0.9em;
+  color: #bf1919;
+  position: relative;
+  top: -20px;
+}
+
 .state__setupSubmit {
   background-color: #8eb43f;
   border: 2px solid #7fa138;
@@ -93,11 +108,14 @@ img {
 
 .state__loading {
   text-align: center;
-  display: flex;
   align-items: center;
   min-height: 100vh;
   justify-content: center;
   background-color: #f2f2e9;
+}
+
+.state.state__loading.show {
+  display: flex;
 }
 
 .state__loadingContent {
@@ -123,6 +141,10 @@ img {
 }
 
 .state__projectList {}
+.state.state__projectList.show {
+  display: block;
+}
+
 .state__projectListHeader {
   clear: both;
   background-color: white;

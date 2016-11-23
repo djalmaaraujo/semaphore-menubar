@@ -6,14 +6,11 @@
 const EVENT_SERVER_BUILD = "build";
 
 const path = require("path");
+const _ = require("lodash");
 const notifier = require("node-notifier");
 const Settings = require("./settings");
 
 const socket = require("socket.io-client")(Settings.get("sockerServer"));
-
-let project = {
-  name: "BVPlus"
-};
 
 class Notifier {
   constructor() {
@@ -45,7 +42,14 @@ class Notifier {
   }
 
   buildTitle(data, status) {
-    return `#${data.build_number} - ${project.name} (${status.toUpperCase()})`;
+    let projects = Settings.get('projects');
+    let project = _.find(projects, (p) => {
+      return (p.hasOwnProperty('hash_id') && (p.hash_id == data.project));
+    });
+
+    let projectName = (!!project && project.hasOwnProperty('name')) ? project.name : "";
+
+    return `#${data.build_number} - ${projectName} (${status.toUpperCase()})`;
   }
 
   getIcon(status) {

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "main.js",
   "dependencies": {
+    "electron-config": "^0.2.1",
     "is-online": "^5.1.2",
     "lodash": "^4.17.2",
     "menubar": "^5.1.0",

@@ -8,7 +8,7 @@ const ipcRenderer = require("electron").ipcRenderer;
 const notificationMenu = {
   data() {
     return {
-      notificationStatus: false
+      notificationStatus: undefined
     };
   },
   template: `<a class="settingsMenu__item" href="#" v-on:click="toggleNotification">{{ menuState }}</a>`,
