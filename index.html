@@ -26,21 +26,25 @@
       </section>
       <!-- Configuration State -->
 
-      <!-- Saved State -->
+      <!-- Loading State -->
       <section class="state__loading" v-show="appState === 'loading'">
         <div class="state_loadingContent">
           <img src="./assets/images/semaphore-gear.png" class="state__loadingLogo" />
           <p class="state__loadingText">Loading your projects...</p>
         </div>
       </section>
-      <!-- Saved State -->
+      <!-- Loading State -->
 
       <!-- List State -->
       <section class="state__projectList" v-show="appState === 'list'">
         <section class="state__projectListHeader">
           <h1 class="state__projectListHeaderTitle">Your Projects</h1>
           <div class="state__projectListHeaderButton">
-            <button type="button" v-on:click="openNewProjectUrl">New</button>
+            <a href="#" v-on:click="toggleMenu"><img src="./assets/images/semaphore-gear.png" class="state__projectListHeaderButtonIcon" /></a>
+
+            <div class="settingsMenu" v-show="openMenu">
+              <settings-menu-toggle-notification></settings-menu-toggle-notification>
+            </div>
           </div>
         </section>
 

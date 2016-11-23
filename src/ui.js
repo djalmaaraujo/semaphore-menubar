@@ -6,6 +6,7 @@ const shell = require('electron').shell;
 const STORAGE_TOKEN_NAME = "semaphoreUserToken";
 const PROJECTS = require("./src/projects");
 const Settings = require("./src/settings");
+const notificationMenu = require("./src/components/settings-menu").notificationMenu;
 
 const getToken = () => {
   let token = localStorage.getItem(STORAGE_TOKEN_NAME);
@@ -13,6 +14,10 @@ const getToken = () => {
   return ((token !== null) && (token !== "")) ? token : undefined;
 };
 
+// Settings Menu
+Vue.component('settings-menu-toggle-notification', notificationMenu);
+
+// Main
 new Vue({
   el: "#app",
   data: {
@@ -20,6 +25,7 @@ new Vue({
     appState: (getToken()) ? "loading" : "setup",
     searchQuery: undefined,
     userToken: undefined,
+    openMenu: false,
     projects: []
   },
 
@@ -45,6 +51,10 @@ new Vue({
 
     openNewProjectUrl () {
       shell.openExternal(Settings.get('newProjectUrl'));
+    },
+
+    toggleMenu() {
+      this.openMenu = !this.openMenu;
     }
   },
 

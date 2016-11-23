@@ -23,9 +23,9 @@ mb.on("ready", () => {
     return;
   }
 
-  ipcMain.on(EVENT_FETCH, (event) => {
-    socket.on(EVENT_SERVER_BUILD, function(data) {
-      app.dispatch(event, data);
-    });
-  });
+  // ipcMain.on(EVENT_FETCH, (event) => {
+  //   socket.on(EVENT_SERVER_BUILD, function(data) {
+  //     app.dispatch(event, data);
+  //   });
+  // });
 });

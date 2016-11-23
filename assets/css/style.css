@@ -145,19 +145,11 @@ img {
 .state__projectListHeaderButton {
   flex: 1;
   text-align: right;
+  position: relative;
 }
 
-.state__projectListHeaderButton button {
-  background-color: #8eb43f;
-  border: 1px solid #7fa138;
-  color: white;
-  text-align: center;
-  line-height: 1em;
-  font-weight: 600;
-  padding: 5px 10px;
-  min-width: 60px;
-  border-radius: 3px;
-  cursor: pointer;
+.state__projectListHeaderButtonIcon {
+  width: 20px;
 }
 
 .state__projectListHeaderSearch {
@@ -230,4 +222,32 @@ img {
   display: inline-block;
   margin: 0 5px;
   font-weight: 500;
+}
+
+.settingsMenu {
+  position: absolute;
+  width: 200px;
+  top: 24px;
+  right: 0;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0px 0px 14px 3px #eaeaea;
+  border-radius: 4px;
+  border-top: 1px solid #efefef;
+  background-color: white;
+  z-index: 3;
+}
+
+.settingsMenu__item {
+  font-size: 0.9em;
+  font-weight: 400;
+  padding: 10px;
+  color: #8eb43f;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.settingsMenu .settingsMenu__item:last-child {
+  border-bottom: none;
 }

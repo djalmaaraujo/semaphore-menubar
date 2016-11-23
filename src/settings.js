@@ -36,6 +36,10 @@ class Settings {
   get(setting) {
     return this.database[setting];
   }
+
+  set(setting, value) {
+    this.database[setting] = value;
+  }
 }
 
 module.exports = new Settings(SETTINGS);
