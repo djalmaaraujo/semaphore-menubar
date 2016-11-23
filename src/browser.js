@@ -10,9 +10,11 @@ const Settings = require("./src/settings");
 // Context Menu Settings
 const notificationMenu = require("./src/components/settings-menu").notificationMenu;
 const exitMenu = require("./src/components/settings-menu").exitMenu;
+const logoutMenu = require("./src/components/settings-menu").logoutMenu;
 
 // Settings Menu
 Vue.component('settings-menu-toggle-notification', notificationMenu);
+Vue.component('settings-menu-logout', logoutMenu);
 Vue.component('settings-menu-exit', exitMenu);
 
 // Main

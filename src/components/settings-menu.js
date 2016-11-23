@@ -36,7 +36,20 @@ const exitMenu = {
   }
 };
 
+// Exit Menu
+const logoutMenu = {
+  template: `<a class="settingsMenu__item" href="#" v-on:click="logout">Logout</a>`,
+  methods: {
+    logout() {
+       Settings.delete('userToken');
+       Settings.delete('projects');
+       ipcRenderer.send("relaunch", true);
+    }
+  }
+};
+
 module.exports = {
   notificationMenu: notificationMenu,
-  exitMenu: exitMenu
+  exitMenu: exitMenu,
+  logoutMenu: logoutMenu
 };
