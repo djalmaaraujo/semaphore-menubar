@@ -1,19 +1,13 @@
 /* globals Vue, require */
 "use strict";
 
-const ipcRenderer = require("electron").ipcRenderer;
 const shell = require('electron').shell;
-const STORAGE_TOKEN_NAME = "semaphoreUserToken";
 const PROJECTS = require("./src/projects");
 const Settings = require("./src/settings");
+
+// Context Menu Settings
 const notificationMenu = require("./src/components/settings-menu").notificationMenu;
 const exitMenu = require("./src/components/settings-menu").exitMenu;
-
-const getToken = () => {
-  let token = localStorage.getItem(STORAGE_TOKEN_NAME);
-
-  return ((token !== null) && (token !== "")) ? token : undefined;
-};
 
 // Settings Menu
 Vue.component('settings-menu-toggle-notification', notificationMenu);
@@ -24,7 +18,7 @@ new Vue({
   el: "#app",
   data: {
     formToken: undefined,
-    appState: (getToken()) ? "loading" : "setup",
+    appState: (Settings.getToken()) ? "loading" : "setup",
     searchQuery: undefined,
     userToken: undefined,
     openMenu: false,
@@ -36,15 +30,15 @@ new Vue({
       setTimeout(() => {
         this.projects = PROJECTS;
         this.appState = "list";
-      }, 2000);
+      }, 3000);
     },
 
     saveToken () {
+      Settings.setToken(this.formToken);
+
       this.userToken = this.formToken;
       this.appState =  "loading";
       this.getProjects();
-
-      localStorage.setItem(STORAGE_TOKEN_NAME, this.formToken);
     },
 
     openTokenUrl () {
