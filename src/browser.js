@@ -1,7 +1,9 @@
-/* globals Vue, require */
+/* globals _, Vue, require */
 "use strict";
 
 const shell = require('electron').shell;
+const _ = require('lodash');
+const request = require('superagent');
 const PROJECTS = require("./src/projects");
 const Settings = require("./src/settings");
 
@@ -18,7 +20,7 @@ new Vue({
   el: "#app",
   data: {
     formToken: undefined,
-    appState: (Settings.getToken()) ? "loading" : "setup",
+    appState: "loading",
     searchQuery: undefined,
     userToken: undefined,
     openMenu: false,
@@ -27,10 +29,20 @@ new Vue({
 
   methods: {
     getProjects() {
-      setTimeout(() => {
-        this.projects = PROJECTS;
-        this.appState = "list";
-      }, 3000);
+      let self = this;
+
+      request
+        .get(Settings.get('apiUrl') + 'projects')
+        .query({auth_token: Settings.getToken()})
+        .set({ Accept: 'application/json' })
+        .end(function(err, res) {
+          if (_.isArray(res.body)) {
+            Settings.set('projects', _.cloneDeep(res.body));
+
+            self.projects = _.cloneDeep(res.body);
+            self.appState = "list";
+          }
+      });
     },
 
     saveToken () {
@@ -45,8 +57,8 @@ new Vue({
       shell.openExternal(Settings.get('whereIsMyTokenUrl'));
     },
 
-    openNewProjectUrl () {
-      shell.openExternal(Settings.get('newProjectUrl'));
+    openProjectUrl (url) {
+      shell.openExternal(url);
     },
 
     toggleMenu() {
@@ -55,8 +67,11 @@ new Vue({
   },
 
   mounted () {
-    if (this.appState === "loading")
+    if (Settings.getToken()) {
       this.getProjects();
+    } else {
+      this.appState = "setup";
+    }
   },
 
   computed: {

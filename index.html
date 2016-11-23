@@ -55,7 +55,7 @@
         </div>
 
         <ul class="state__projectListItems">
-          <li v-for="item in filteredProjects" class="state__projectListItem" v-on:clik="openProjectUrl(item.name)">
+          <li v-for="item in filteredProjects" class="state__projectListItem" v-on:click="openProjectUrl(item.html_url)">
             <img :src="'assets/images/statuses/icon-deploy-' + item.branches[0].result + '.png'" alt="Build Status Flag" class="state__projectListItemFlag" />
             <p class="state__projectListItemDescription">{{ item.owner }} <span>/</span> {{ item.name }}</p>
           </li>
