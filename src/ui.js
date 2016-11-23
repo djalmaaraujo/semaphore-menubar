@@ -2,10 +2,12 @@
 "use strict";
 
 const ipcRenderer = require("electron").ipcRenderer;
+const shell = require('electron').shell;
 const STORAGE_TOKEN_NAME = "semaphoreUserToken";
 const PROJECTS = require("./src/projects");
+const Settings = require("./src/settings");
 
-const getToken = function () {
+const getToken = () => {
   let token = localStorage.getItem(STORAGE_TOKEN_NAME);
 
   return ((token !== null) && (token !== "")) ? token : undefined;
@@ -16,6 +18,7 @@ new Vue({
   data: {
     formToken: undefined,
     appState: (getToken()) ? "loading" : "setup",
+    searchQuery: undefined,
     userToken: undefined,
     projects: []
   },
@@ -25,8 +28,7 @@ new Vue({
       setTimeout(() => {
         this.projects = PROJECTS;
         this.appState = "list";
-
-      }, 3000);
+      }, 2000);
     },
 
     saveToken () {
@@ -35,12 +37,37 @@ new Vue({
       this.getProjects();
 
       localStorage.setItem(STORAGE_TOKEN_NAME, this.formToken);
+    },
+
+    openTokenUrl () {
+      shell.openExternal(Settings.get('whereIsMyTokenUrl'));
+    },
+
+    openNewProjectUrl () {
+      shell.openExternal(Settings.get('newProjectUrl'));
     }
   },
 
   mounted () {
     if (this.appState === "loading")
       this.getProjects();
+  },
+
+  computed: {
+    filteredProjects () {
+      let data = this.projects;
+      let query = this.searchQuery;
+
+      if (query) {
+        data = data.filter((row) => {
+          return Object.keys(row).some(function (key) {
+            return String(row[key]).toLowerCase().indexOf(query.toLowerCase()) > -1;
+          });
+        });
+      }
+
+      return data;
+    }
   }
 });
 

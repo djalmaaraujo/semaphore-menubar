@@ -10,26 +10,49 @@
   <body>
     <div id="app">
       <!-- Configuration State -->
-      <section v-show="appState === 'setup'">
-        <img src="./assets/images/semaphore.png" />
-        <input type="text" v-model="formToken" placeholder="Paste your token here" />
+      <section class="state__setup" v-show="appState === 'setup'">
+        <img src="./assets/images/semaphore.png" class="state__setupLogo" />
 
-        <button type="button" v-on:click="saveToken">Save</button>
+        <h1 class="state__setupTitle">Hello!</h1>
+        <h2 class="state__setupSubTitle">Sign In via User <span>TOKEN</span></h2>
+
+        <form v-on:submit="saveToken">
+          <input type="text" v-model="formToken" placeholder="Paste your token here" class="state__setupTokenInput" required />
+
+          <button class="state__setupSubmit" type="submit" >Sign in</button>
+        </form>
+
+        <a v-on:click="openTokenUrl" href="#" class="state__setupTokenLink">Where's my token?</a>
       </section>
       <!-- Configuration State -->
 
       <!-- Saved State -->
-      <section v-show="appState === 'loading'">
-        <img src="./assets/images/semaphore.png" />
-        <p>Loading your data...</p>
+      <section class="state__loading" v-show="appState === 'loading'">
+        <div class="state_loadingContent">
+          <img src="./assets/images/semaphore-gear.png" class="state__loadingLogo" />
+          <p class="state__loadingText">Loading your projects...</p>
+        </div>
       </section>
       <!-- Saved State -->
 
       <!-- List State -->
-      <section v-show="appState === 'list'">
-        <ul class="projects">
-          <li v-for="item in projects">
-            <img :src="'assets/images/semaphore_' + item.branches[0].result + '.png'" alt="Build Status" width="40" /> <strong>{{ item.owner }}/{{ item.name }}</strong>
+      <section class="state__projectList" v-show="appState === 'list'">
+        <section class="state__projectListHeader">
+          <h1 class="state__projectListHeaderTitle">Your Projects</h1>
+          <div class="state__projectListHeaderButton">
+            <button type="button" v-on:click="openNewProjectUrl">New</button>
+          </div>
+        </section>
+
+        <div class="state__projectListHeaderSearch">
+          <img src="./assets/images/search-icon.png" class="state__projectListHeaderSearchIcon" />
+          <input v-model="searchQuery" type="text" class="state__projectListHeaderSearchInput" autofocus="" placeholder="Filter by name..." />
+        </div>
+
+        <ul class="state__projectListItems">
+          <li v-for="item in filteredProjects" class="state__projectListItem" v-on:clik="openProjectUrl(item.name)">
+            <img :src="'assets/images/statuses/icon-deploy-' + item.branches[0].result + '.png'" alt="Build Status Flag" class="state__projectListItemFlag" />
+            <p class="state__projectListItemDescription">{{ item.owner }} <span>/</span> {{ item.name }}</p>
           </li>
         </ul>
       </section>

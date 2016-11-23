@@ -6,41 +6,228 @@ html {
   box-sizing: inherit;
 }
 
+* {
+  outline: none;
+}
+
 html,
 body {
-  overflow: hidden;
   font-family: "Helvetica", sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 16px;
 }
 
 img {
   margin: 0 auto;
   max-width: 50%;
   border: 0;
-  display: block;
 }
 
-h1 {
-  font-size: 1.6em;
-}
-
-#app {
-  padding: 20px 10px 0 10px;
-  width: 100vw;
+.state__setup {
+  position: relative;
+  padding: 30px;
   text-align: center;
+  background-color: #f2f2e9;
 }
 
-.projects {
-  list-style-type: none;
+.state__setupLogo {
+  width: 105px;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 30px;
 }
 
-.projects li {
+.state__setupTitle,
+.state__setupSubTitle {
+  font-weight: 700;
+  color: #333333;
+}
+.state__setupTitle {
+  font-size: 2.25em;
+  margin: 0;
+}
+
+.state__setupSubTitle {
+  font-size: 1.5em;
+  margin: 0 0 30px 0;
+}
+
+.state__setupSubTitle span {
+  color: #be1818;
+}
+
+.state__setupTokenInput {
+  width: 90%;
+  padding: 20px 30px;
+  border: 2px solid #cccccc;
+  background-color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: center;
+  color: #555;
+  margin: 0 0 30px 0;
+  border-radius: 3px;
+}
+
+.state__setupSubmit {
+  background-color: #8eb43f;
+  border: 2px solid #7fa138;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  margin: 0 auto 40px auto;
+  font-weight: 600;
+  display: block;
+  padding: 15px 30px;
+  min-width: 200px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.state__setupTokenLink {
+  color: #555555;
+}
+
+.state__loading {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
+  background-color: #f2f2e9;
+}
+
+.state__loadingContent {
+  flex: 1;
+}
+
+.state__loadingLogo {
+  animation: spin 3s infinite linear;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+@keyframes spin {
+  100% {
+      transform:rotate(360deg);
+  }
+}
+
+.state__loadingText {
+  font-weight: 600;
+  margin: 0;
+  color: #555;
+}
+
+.state__projectList {}
+.state__projectListHeader {
   clear: both;
-}
-.projects img {
-  float: left;
+  background-color: white;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  border-bottom: 1px solid #efefef;
 }
 
-.projects strong {
-  float: right;
-  text-align: left;
+.state__projectListHeaderTitle {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #333;
+  flex: 1;
+}
+
+.state__projectListHeaderButton {
+  flex: 1;
+  text-align: right;
+}
+
+.state__projectListHeaderButton button {
+  background-color: #8eb43f;
+  border: 1px solid #7fa138;
+  color: white;
+  text-align: center;
+  line-height: 1em;
+  font-weight: 600;
+  padding: 5px 10px;
+  min-width: 60px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.state__projectListHeaderSearch {
+  position: relative;
+  border-bottom: 1px solid #efefef;
+  height: 50px;
+  width: 100vw;
+  background-color: white;
+}
+
+.state__projectListHeaderSearchIcon {
+  position: absolute;
+  top: 17px;
+  left: 30px;
+  width: 16px;
+  height: 16px;
+  z-index: 2;
+}
+
+.state__projectListHeaderSearchInput {
+  position: absolute;
+  top: 0;
+  left: 61px;
+  width: calc(100% - 91px);
+  border: none;
+  color: #555;
+  height: 48px;
+  z-index: 1;
+}
+
+.state__projectListItems {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.state__projectListItem {
+  padding: 0 30px;
+  line-height: 4em;
+  background-color: transparent;
+  cursor: pointer;
+  border-bottom: 1px solid #efefef;
+}
+
+.state__projectListItem:nth-child(2n+2) {
+  background-color: white;
+}
+
+.state__projectListItem:hover {
+  background-color: #f8ffea;
+}
+
+.state__projectListItemFlag {
+  height: 20px;
+  position: relative;
+  display: inline-block;
+  top: 5px;
+  margin-right: 5px;
+}
+
+.state__projectListItemDescription {
+  display: inline-block;
+  line-height: 20px;
+  margin: 0;
+  color: #333333;
+  font-style: 1em;
+}
+
+.state__projectListItemDescription {
+  display: inline-block;
+  margin: 0 5px;
+  font-weight: 500;
 }

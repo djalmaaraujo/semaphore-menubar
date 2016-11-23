@@ -21,6 +21,9 @@ const SETTINGS = {
   playSounds: true,
   soundName: "Blow",
   sockerServer: "https://semaphorewatcherserver.herokuapp.com/",
+  whereIsMyTokenUrl: "https://semaphoreci.com/users/edit",
+  newProjectUrl: "https://semaphoreci.com/new",
+  receiveNotifications: true,
   STATUES_PROGRESS: STATUES_PROGRESS,
   NOTIFICATION_TYPES: NOTIFICATION_TYPES
 };

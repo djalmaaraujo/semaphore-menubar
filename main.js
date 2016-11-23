@@ -18,7 +18,10 @@ mb.on("ready", () => {
   let app = new Semaphore();
 
   mb.showWindow();
-  mb.window.openDevTools();
+
+  if (Settings.get('receiveNotifications') === false) {
+    return;
+  }
 
   ipcMain.on(EVENT_FETCH, (event) => {
     socket.on(EVENT_SERVER_BUILD, function(data) {
