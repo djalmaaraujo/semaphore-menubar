@@ -248,6 +248,11 @@ img {
   border-bottom: 1px solid #f1f1f1;
 }
 
+.settingsMenu__item:hover {
+  background-color: #f8f8f8;
+  border-radius: 4px;
+}
+
 .settingsMenu .settingsMenu__item:last-child {
   border-bottom: none;
 }
