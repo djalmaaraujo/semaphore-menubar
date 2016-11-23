@@ -82,6 +82,3 @@ new Vue({
     }
   }
 });
-
-// Connect to Socket
-ipcRenderer.send("fetch", true);

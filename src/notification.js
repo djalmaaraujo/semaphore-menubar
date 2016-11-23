@@ -3,26 +3,28 @@
 
 "use strict";
 
+const EVENT_SERVER_BUILD = "build";
+
 const path = require("path");
 const notifier = require("node-notifier");
 const Settings = require("./settings");
+
+const socket = require("socket.io-client")(Settings.get("sockerServer"));
 
 let project = {
   name: "BVPlus"
 };
 
 class Notifier {
-  notify(data) {
-    let status = this.getStatus(data);
+  constructor() {
+    let self = this;
 
-    notifier.notify({
-      title: this.buildTitle(data, status),
-      progress: this.getProgress(status),
-      type: this.getType(status),
-      sound: this.getPlaySound(),
-      icon: this.getIcon(status),
-      message: data.message,
-      priority: 1
+    if (Settings.get('receiveNotifications') === false) {
+      return;
+    }
+
+    socket.on(EVENT_SERVER_BUILD, function(data) {
+      self.notify(data);
     });
   }
 
@@ -48,6 +50,20 @@ class Notifier {
 
   getIcon(status) {
     return path.join(__dirname, "../assets/images/statuses/icon-deploy-" + status + ".png");
+  }
+
+  notify(data) {
+    let status = this.getStatus(data);
+
+    notifier.notify({
+      title: this.buildTitle(data, status),
+      progress: this.getProgress(status),
+      type: this.getType(status),
+      sound: this.getPlaySound(),
+      icon: this.getIcon(status),
+      message: data.message,
+      priority: 1
+    });
   }
 }
 
