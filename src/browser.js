@@ -56,6 +56,7 @@ new Vue({
           if (_.isArray(res.body)) {
             Settings.set('projects', _.cloneDeep(res.body));
 
+            self.setupMessage = undefined;
             self.projects = _.cloneDeep(res.body);
             self.appState = "list";
           }
