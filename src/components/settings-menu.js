@@ -2,7 +2,9 @@
 "use strict";
 
 const Settings = require("../settings");
+const ipcRenderer = require("electron").ipcRenderer;
 
+// Toggle Notification
 const notificationMenu = {
   data() {
     return {
@@ -24,6 +26,17 @@ const notificationMenu = {
   }
 };
 
+// Exit Menu
+const exitMenu = {
+  template: `<a class="settingsMenu__item" href="#" v-on:click="exit">Exit</a>`,
+  methods: {
+    exit() {
+       ipcRenderer.send("exit", true);
+    }
+  }
+};
+
 module.exports = {
-  notificationMenu: notificationMenu
+  notificationMenu: notificationMenu,
+  exitMenu: exitMenu
 };

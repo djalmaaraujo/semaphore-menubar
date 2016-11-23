@@ -12,12 +12,18 @@ const ElectronConfig = require("./src/electron");
 const mb = menubar(ElectronConfig);
 
 const EVENT_FETCH = "fetch";
+const EVENT_EXIT = "exit";
 const EVENT_SERVER_BUILD = "build";
 
 mb.on("ready", () => {
   let app = new Semaphore();
 
   mb.showWindow();
+
+  // Exit Signal
+  ipcMain.on(EVENT_EXIT, () => {
+    mb.app.exit();
+  });
 
   if (Settings.get('receiveNotifications') === false) {
     return;

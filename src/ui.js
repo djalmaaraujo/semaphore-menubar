@@ -7,6 +7,7 @@ const STORAGE_TOKEN_NAME = "semaphoreUserToken";
 const PROJECTS = require("./src/projects");
 const Settings = require("./src/settings");
 const notificationMenu = require("./src/components/settings-menu").notificationMenu;
+const exitMenu = require("./src/components/settings-menu").exitMenu;
 
 const getToken = () => {
   let token = localStorage.getItem(STORAGE_TOKEN_NAME);
@@ -16,6 +17,7 @@ const getToken = () => {
 
 // Settings Menu
 Vue.component('settings-menu-toggle-notification', notificationMenu);
+Vue.component('settings-menu-exit', exitMenu);
 
 // Main
 new Vue({
