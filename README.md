@@ -7,6 +7,12 @@ Open Source Unofficial Semaphore CI Desktop App
 </p>
 
 
+## Download
+
+**Version 0.0.2**
+
+[Download](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.0.2/Semaphore.Menubar.app.zip)
+
 ## Roadmap
 
 - [x] Simple Notifications
