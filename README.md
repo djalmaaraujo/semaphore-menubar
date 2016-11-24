@@ -15,11 +15,11 @@ Open Source Unofficial Semaphore CI Desktop App
 - [x] New Awesome Layout
 - [x] Replace Semaphore Icons with semaphoreci icons
 - [x] Search/Filter projects \o/
-- [ ] Save all settings on localStorage
-- [ ] Get notifications from projects on storage
-- [ ] Get projects with AJAX using user Token
-- [ ] Cache projects
-- [ ] Create a Config menu
+- [x] Save all settings on localStorage
+- [x] Get notifications from projects on storage
+- [x] Get projects with AJAX using user Token
+- [x] Cache projects
+- [x] Create a Config menu
 - [ ] Create a small website
 - [ ] Add SASS to CSS
 

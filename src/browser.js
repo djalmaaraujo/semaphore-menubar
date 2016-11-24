@@ -65,7 +65,8 @@ new Vue({
       });
     },
 
-    saveToken () {
+    saveToken (e) {
+      e.preventDefault();
       Settings.set('userToken', this.formToken);
 
       this.getProjects();

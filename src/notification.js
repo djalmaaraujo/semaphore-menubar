@@ -14,15 +14,29 @@ const socket = require("socket.io-client")(Settings.get("sockerServer"));
 
 class Notifier {
   constructor() {
-    let self = this;
+    if (Settings.has('receiveNotifications') === false) {
+      Settings.set('receiveNotifications', true);
+    }
 
-    if (Settings.get('receiveNotifications') === false) {
+    if (Settings.get('receiveNotifications') !== true) {
       return;
     }
 
-    socket.on(EVENT_SERVER_BUILD, function(data) {
-      self.notify(data);
+    this.connect();
+  }
+
+  connect() {
+    let self = this;
+
+    socket.on(EVENT_SERVER_BUILD, (data) => {
+      if (Settings.get('receiveNotifications') === true) {
+        self.notify(data);
+      }
     });
+  }
+
+  disconnect() {
+    socket.disconnect();
   }
 
   getStatus(data) {

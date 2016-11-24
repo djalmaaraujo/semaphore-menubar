@@ -42,7 +42,16 @@ const SETTINGS = {
     preloadWindow: true,
     debug: true,
     width: 420,
-    height: 520,
+    height: 500,
+    resizable: false,
+    movable: false,
+    minimizable: false,
+    maximizable: false,
+    title: "Semaphore Menubar",
+    fullscreen: false,
+    fullscreenable: false,
+    backgroundColor: '#f2f2e9',
+    zoomToPageWidth: false,
     showDockIcon: false
   }
 };
@@ -74,6 +83,10 @@ class Settings {
 
   delete(setting) {
     return cfg.delete(setting);
+  }
+
+  clear() {
+    return cfg.clear();
   }
 }
 
