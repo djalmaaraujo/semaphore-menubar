@@ -15,8 +15,6 @@
 const Config = require('electron-config');
 const cfg = new Config();
 
-console.log(cfg.path);
-
 const STATUES_PROGRESS = {
   passed: 100,
   failed: 0,
@@ -39,8 +37,6 @@ const SETTINGS = {
   STATUES_PROGRESS: STATUES_PROGRESS,
   NOTIFICATION_TYPES: NOTIFICATION_TYPES,
   window: {
-    preloadWindow: true,
-    debug: true,
     width: 420,
     height: 520,
     resizable: false,
