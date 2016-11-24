@@ -4,7 +4,7 @@
 
 const SEMAPHORE_TOKEN_CHARS = 20;
 const SEMAPHORE_TOKEN_TIMEOUT = 1000;
-const REFRESH_PROJECTS_TIMEOUT = 30000;
+const REFRESH_PROJECTS_TIMEOUT = 60000;
 
 const shell = require('electron').shell;
 const _ = require('lodash');
