@@ -6,6 +6,9 @@ Open Source Unofficial Semaphore CI Desktop App
   <img src="https://github.com/djalmaaraujo/semaphore-menubar/blob/master/screenshots/screenshot.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
+* Supports Desktop Notifications from Builds (Passed, Failed, Stopped, Etc)
+* List your projects with master status updated
+* More soon...
 
 ## Download
 
