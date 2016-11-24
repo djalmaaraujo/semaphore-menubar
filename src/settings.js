@@ -42,7 +42,7 @@ const SETTINGS = {
     preloadWindow: true,
     debug: true,
     width: 420,
-    height: 500,
+    height: 520,
     resizable: false,
     movable: false,
     minimizable: false,
