@@ -2,10 +2,14 @@
 
 "use strict";
 
+const SEMAPHORE_TOKEN_CHARS = 20;
+const SEMAPHORE_TOKEN_TIMEOUT = 1000;
+
 const shell = require('electron').shell;
 const _ = require('lodash');
 const request = require('superagent');
 const Settings = require("./src/settings");
+const {clipboard} = require('electron');
 
 // Context Menu Settings
 const notificationMenu = require("./src/components/settings-menu").notificationMenu;
@@ -68,6 +72,7 @@ new Vue({
     saveToken (e) {
       e.preventDefault();
       Settings.set('userToken', this.formToken);
+      this.stopClipboard();
 
       this.getProjects();
     },
@@ -82,6 +87,22 @@ new Vue({
 
     toggleMenu() {
       this.openMenu = !this.openMenu;
+    },
+
+    startClipboard() {
+      let self = this;
+
+      this.clipBoardCheck = setInterval(() => {
+        let text = clipboard.readText();
+
+        if (text.length == SEMAPHORE_TOKEN_CHARS) {
+          self.formToken = clipboard.readText();
+        }
+      }, SEMAPHORE_TOKEN_TIMEOUT);
+    },
+
+    stopClipboard() {
+      clearInterval(this.clipBoardCheck);
     }
   },
 
@@ -91,6 +112,8 @@ new Vue({
     } else {
       this.appState = "setup";
     }
+
+    this.startClipboard();
   },
 
   computed: {

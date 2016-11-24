@@ -22,7 +22,7 @@ class Semaphore {
 
   bindQuit() {
     ipcMain.on(EVENT_EXIT, () => {
-      this.mb.app.exit();
+      this.mb.app.exit(0);
     });
   }
 
