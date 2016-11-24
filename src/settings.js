@@ -31,7 +31,7 @@ const NOTIFICATION_TYPES = {
 
 const SETTINGS = {
   soundName: "Blow",
-  sockerServer: "https://semaphorewatcherserver.herokuapp.com/",
+  sockerServer: "http://04f7bccd.ngrok.io/",
   apiUrl: "https://semaphoreci.com/api/v1/",
   whereIsMyTokenUrl: "https://semaphoreci.com/users/edit",
   STATUES_PROGRESS: STATUES_PROGRESS,

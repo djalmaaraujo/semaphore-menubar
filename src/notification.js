@@ -30,6 +30,20 @@ class Notifier {
 
     socket.on(EVENT_SERVER_BUILD, (data) => {
       if (Settings.get('receiveNotifications') === true) {
+        let projects = Settings.get('projects');
+
+        if (!projects) {
+          return;
+        }
+
+        let project = _.find(projects, (p) => {
+          return (p.hasOwnProperty('hash_id') && (p.hash_id == data.project));
+        });
+
+        if (!project) {
+          return;
+        }
+
         self.notify(data);
       }
     });
@@ -55,12 +69,7 @@ class Notifier {
     return Settings.get('STATUES_PROGRESS')[status];
   }
 
-  buildTitle(data, status) {
-    let projects = Settings.get('projects');
-    let project = _.find(projects, (p) => {
-      return (p.hasOwnProperty('hash_id') && (p.hash_id == data.project));
-    });
-
+  buildTitle(data, status, project) {
     let projectName = (!!project && project.hasOwnProperty('name')) ? project.name : "";
 
     return `#${data.build_number} - ${projectName} (${status.toUpperCase()})`;
@@ -70,11 +79,11 @@ class Notifier {
     return path.join(__dirname, "../assets/images/statuses/icon-deploy-" + status + ".png");
   }
 
-  notify(data) {
+  notify(data, project) {
     let status = this.getStatus(data);
 
     notifier.notify({
-      title: this.buildTitle(data, status),
+      title: this.buildTitle(data, status, project),
       progress: this.getProgress(status),
       type: this.getType(status),
       sound: this.getPlaySound(),

@@ -12,9 +12,9 @@ Open Source Unofficial Semaphore CI Desktop App
 
 ## Download
 
-**Version 0.0.2**
+**Version 0.0.3**
 
-[Download](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.0.2/Semaphore.Menubar.app.zip)
+[Download](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.0.3/Semaphore.Menubar.app.zip)
 
 ## Roadmap
 
@@ -29,6 +29,7 @@ Open Source Unofficial Semaphore CI Desktop App
 - [x] Get projects with AJAX using user Token
 - [x] Cache projects
 - [x] Create a Config menu
+- [x] Block notification if menu if off
 - [ ] Create a small website
 - [ ] Add SASS to CSS
 

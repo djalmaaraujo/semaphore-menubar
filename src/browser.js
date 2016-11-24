@@ -4,14 +4,14 @@
 
 const SEMAPHORE_TOKEN_CHARS = 20;
 const SEMAPHORE_TOKEN_TIMEOUT = 1000;
-const REFRESH_PROJECTS_TIMEOUT = 60000;
+const REFRESH_PROJECTS_TIMEOUT = 20000;
 
 const shell = require('electron').shell;
 const _ = require('lodash');
-const request = require('superagent');
 const Settings = require("./src/settings");
 const {clipboard} = require('electron');
 const isOnline = require('is-online');
+const ipcRenderer = require("electron").ipcRenderer;
 
 // Context Menu Settings
 const notificationMenu = require("./src/components/settings-menu").notificationMenu;
@@ -83,6 +83,14 @@ new Vue({
       clearInterval(this.clipBoardCheck);
     },
 
+    startRefreshProjectsLoop() {
+      let self = this;
+
+      this.refreshProjectsInterval = setInterval(() => {
+        self.refreshProjects();
+      }, REFRESH_PROJECTS_TIMEOUT);
+    },
+
     refreshProjects() {
       let self = this;
 
@@ -91,35 +99,24 @@ new Vue({
           return;
         }
 
-        request
-          .get(Settings.get('apiUrl') + 'projects')
-          .query({auth_token: Settings.get('userToken')})
-          .set({ Accept: 'application/json' })
-          .end((err, res) => {
-            if (err) {
-              Settings.delete('userToken');
-              Settings.delete('projects');
+        ipcRenderer.send('getProjects', true);
 
-              self.appState = "setup";
-              self.setupMessage = "Invalid token, please try again";
-              clearInterval(self.refreshProjectsInterval);
-            }
+        ipcRenderer.on('getProjects:list', (event, projects) => {
+          self.setupMessage = undefined;
+          self.projects = _.cloneDeep(projects);
+          self.appState = "list";
+        });
 
-            if (_.isArray(res.body)) {
-              Settings.set('projects', _.cloneDeep(res.body));
-
-              self.setupMessage = undefined;
-              self.projects = _.cloneDeep(res.body);
-              self.appState = "list";
-            }
+        ipcRenderer.on('getProjects:error', (event, errorMessage) => {
+          self.appState = "setup";
+          self.setupMessage = errorMessage;
+          clearInterval(self.refreshProjectsInterval);
         });
       });
     }
   },
 
   mounted () {
-    let self = this;
-
     if (Settings.has('userToken')) {
       this.getProjects();
     } else {
@@ -128,9 +125,7 @@ new Vue({
 
     this.startClipboard();
 
-    this.refreshProjectsInterval = setInterval(() => {
-      self.refreshProjects();
-    }, REFRESH_PROJECTS_TIMEOUT);
+    this.startRefreshProjectsLoop();
   },
 
   computed: {

@@ -8,6 +8,7 @@ const EVENT_RELAUNCH = "relaunch";
 
 const {ipcMain} = require("electron");
 const Notifier = require("./notification");
+const Projects = require("./projects");
 const Settings = require("./settings");
 
 class Semaphore {
@@ -18,6 +19,7 @@ class Semaphore {
 
     mb.showWindow();
     new Notifier();
+    new Projects();
   }
 
   bindQuit() {
