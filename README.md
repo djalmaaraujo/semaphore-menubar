@@ -4,7 +4,7 @@ Open Source Unofficial Semaphore CI Desktop App
 
 ## Notifications (Please, read this)!
 
-To receive notifications on your APP, you need to setup a WebHook on your Project Settings. You need to add a webhook with the "Build" type, pointing to this URL: ```https://semaphorewatcherserver.herokuapp.com/hook```
+To receive notifications on your APP, you need to setup a WebHook on your Project Settings. You need to add a webhook with the "Build" type, pointing to this URL: ```http://www.semaphoremenubar.info/hook```
 
 Go to your Project Settings -> Notifications -> WebHooks -> + Add WebHook
 
