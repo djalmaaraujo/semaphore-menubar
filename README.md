@@ -38,6 +38,8 @@ Go to your Project Settings -> Notifications -> WebHooks -> + Add WebHook
 - [x] Cache projects
 - [x] Create a Config menu
 - [x] Block notification if menu if off
+- [ ] Enable/Disable Notification per Project
+- [ ] Open build URL when clicking on the notification
 - [ ] Create a small website
 - [ ] Add SASS to CSS
 
