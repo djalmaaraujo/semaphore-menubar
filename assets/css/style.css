@@ -237,15 +237,18 @@ img {
 .state__projectListItemDescription {
   display: inline-block;
   line-height: 20px;
-  margin: 0;
   color: #333333;
   font-style: 1em;
-}
-
-.state__projectListItemDescription {
-  display: inline-block;
   margin: 0 5px;
   font-weight: 500;
+}
+
+.state__projectListItemButton {
+  display: inline-block;
+  float: right;
+  position: relative;
+  top: 32px;
+  zoom: 0.7;
 }
 
 .settingsMenu {
@@ -279,4 +282,43 @@ img {
 
 .settingsMenu .settingsMenu__item:last-child {
   border-bottom: none;
+}
+
+/* ON/OFF SWITCH BY proto.io */
+
+.onoffswitch {
+  position: relative; width: 55px;
+  -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  display: none;
+}
+.onoffswitch-label {
+  display: block; overflow: hidden; cursor: pointer;
+  height: 20px; padding: 0; line-height: 20px;
+  border: 0px solid #FFFFFF; border-radius: 30px;
+  background-color: #9E9E9E;
+}
+.onoffswitch-label:before {
+  content: "";
+  display: block; width: 30px; margin: -5px;
+  background: #FFFFFF;
+  position: absolute; top: 0; bottom: 0;
+  right: 31px;
+  border-radius: 30px;
+  box-shadow: 0 6px 12px 0px #757575;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+  background-color: #d5eaa9;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  border-color: #a8d253;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  right: 0px;
+  background-color: #9cc34b;
+  box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
 }

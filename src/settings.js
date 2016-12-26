@@ -30,6 +30,7 @@ const NOTIFICATION_TYPES = {
 };
 
 const SETTINGS = {
+  playSounds: true,
   soundName: "Blow",
   sockerServer: "https://semaphorewatcherserver.herokuapp.com/",
   apiUrl: "https://semaphoreci.com/api/v1/",
@@ -71,6 +72,10 @@ class Settings {
     } else {
       cfg.set(setting, value);
     }
+  }
+
+  all() {
+    return cfg.store;
   }
 
   has(setting) {

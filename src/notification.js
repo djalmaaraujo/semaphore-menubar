@@ -40,7 +40,7 @@ class Notifier {
           return (p.hasOwnProperty('hash_id') && (p.hash_id == data.project));
         });
 
-        if (!project) {
+        if (!project || !self.getProjectConfig(project.hash_id)) {
           return;
         }
 
@@ -51,6 +51,10 @@ class Notifier {
 
   disconnect() {
     socket.disconnect();
+  }
+
+  getProjectConfig(hash_id) {
+    return Settings.get('notifications.' + hash_id);
   }
 
   getStatus(data) {
@@ -79,6 +83,10 @@ class Notifier {
     return path.join(__dirname, "../assets/images/statuses/icon-deploy-" + status + ".png");
   }
 
+  getMajorIcon() {
+    return path.join(__dirname, "../assets/images/semaphore-gear.png");
+  }
+
   notify(data, project) {
     let status = this.getStatus(data);
 
@@ -88,8 +96,11 @@ class Notifier {
       type: this.getType(status),
       sound: this.getPlaySound(),
       icon: this.getIcon(status),
+      contentImage: this.getMajorIcon(),
       message: data.message,
-      priority: 1
+      priority: 1,
+      open: data.build_url,
+      wait: true
     });
   }
 }

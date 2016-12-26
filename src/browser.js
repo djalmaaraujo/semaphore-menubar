@@ -113,6 +113,16 @@ new Vue({
           clearInterval(self.refreshProjectsInterval);
         });
       });
+    },
+
+    toggleProjectNotification(item) {
+      let projectNotification = this.getProjectConfig(item.hash_id);
+
+      Settings.set('notifications.' + item.hash_id, (projectNotification) ? false : true);
+    },
+
+    getProjectConfig(hash_id) {
+      return Settings.get('notifications.' + hash_id);
     }
   },
 
@@ -140,6 +150,12 @@ new Vue({
           });
         });
       }
+
+      data = data.map((project) => {
+        project.checked = this.getProjectConfig(project.hash_id);
+
+        return project;
+      });
 
       return data;
     }

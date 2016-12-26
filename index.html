@@ -64,9 +64,17 @@
         </div>
 
         <ul class="state__projectListItems">
-          <li v-for="item in filteredProjects" class="state__projectListItem" v-on:click="openProjectUrl(item.html_url)">
-            <img :src="'assets/images/statuses/icon-deploy-' + item.branches[0].result + '.png'" alt="Build Status Flag" class="state__projectListItemFlag" />
-            <p class="state__projectListItemDescription">{{ item.owner }} <span>/</span> {{ item.name }}</p>
+          <li v-for="item, index in filteredProjects" class="state__projectListItem">
+            <img :src="'assets/images/statuses/icon-deploy-' + item.branches[0].result + '.png'" alt="Build Status Flag" class="state__projectListItemFlag" v-on:click="openProjectUrl(item.html_url)" />
+
+            <p class="state__projectListItemDescription" v-on:click="openProjectUrl(item.html_url)">{{ item.owner }} <span>/</span> {{ item.name }}</p>
+
+            <div class="state__projectListItemButton">
+              <div class="onoffswitch">
+                <input v-bind:id="'project' + index" v-on:click="toggleProjectNotification(item)" type="checkbox" v-bind:value="item.hash_id" class="onoffswitch-checkbox" :checked="item.checked" />
+                <label class="onoffswitch-label" v-bind:for="'project' + index"></label>
+              </div>
+            </div>
           </li>
         </ul>
       </section>
