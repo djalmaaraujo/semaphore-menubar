@@ -18,11 +18,11 @@ Go to your Project Settings -> Notifications -> WebHooks -> + Add WebHook
 
 ## Download
 
-**Version 0.0.3**
+**Version 0.1.0**
 
-- [Download macOS](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.0.3/Semaphore.Menubar.app.zip)
-- [Download Windows 64](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.0.3/semaphore-menubar-win32-x64.zip)
-- [Download Linux 64](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.0.3/semaphore-menubar-linux-x64.zip)
+- [Download macOS](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.0/Semaphore.Menubar.app.zip)
+- [Download Windows 64](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.0/semaphore-menubar-win32-x64.zip)
+- [Download Linux 64](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.0/semaphore-menubar-linux-x64.zip)
 
 ## Roadmap
 
@@ -38,8 +38,9 @@ Go to your Project Settings -> Notifications -> WebHooks -> + Add WebHook
 - [x] Cache projects
 - [x] Create a Config menu
 - [x] Block notification if menu if off
-- [ ] Enable/Disable Notification per Project
+- [x] Enable/Disable Notification per Project
 - [x] Open build URL when clicking on the notification
+- [x] Enable/Disable Sounds for notifications
 - [ ] Add build tasks (gulp maybe)
 - [ ] Create a small website
 - [ ] Add SASS to CSS
