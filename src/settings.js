@@ -30,7 +30,6 @@ const NOTIFICATION_TYPES = {
 };
 
 const SETTINGS = {
-  playSounds: true,
   soundName: "Blow",
   sockerServer: "https://semaphorewatcherserver.herokuapp.com/",
   apiUrl: "https://semaphoreci.com/api/v1/",
@@ -40,10 +39,10 @@ const SETTINGS = {
   window: {
     width: 420,
     height: 520,
-    resizable: false,
-    movable: false,
-    minimizable: false,
-    maximizable: false,
+    resizable: true,
+    movable: true,
+    minimizable: true,
+    maximizable: true,
     title: "Semaphore Menubar",
     fullscreen: false,
     fullscreenable: false,

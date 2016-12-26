@@ -15,11 +15,13 @@ const ipcRenderer = require("electron").ipcRenderer;
 
 // Context Menu Settings
 const notificationMenu = require("./src/components/settings-menu").notificationMenu;
+const playSoundsMenu = require("./src/components/settings-menu").playSoundsMenu;
 const exitMenu = require("./src/components/settings-menu").exitMenu;
 const logoutMenu = require("./src/components/settings-menu").logoutMenu;
 
 // Settings Menu
 Vue.component('settings-menu-toggle-notification', notificationMenu);
+Vue.component('settings-menu-toggle-sounds', playSoundsMenu);
 Vue.component('settings-menu-logout', logoutMenu);
 Vue.component('settings-menu-exit', exitMenu);
 

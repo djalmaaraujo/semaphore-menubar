@@ -62,7 +62,7 @@ class Notifier {
   }
 
   getPlaySound() {
-    return Settings.get("playSounds") ? Settings.get("soundName") : false;
+    return Settings.get("playSoundsStatus") ? Settings.get("soundName") : false;
   }
 
   getType(status) {

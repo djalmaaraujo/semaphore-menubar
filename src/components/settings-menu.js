@@ -26,6 +26,28 @@ const notificationMenu = {
   }
 };
 
+// Toggle playSounds
+const playSoundsMenu = {
+  data() {
+    return {
+      playSoundsStatus: Settings.get('playSoundsStatus')
+    };
+  },
+  template: `<a class="settingsMenu__item" href="#" v-on:click="playSounds">{{ menuState }}</a>`,
+  methods: {
+    playSounds() {
+      this.playSoundsStatus = !this.playSoundsStatus;
+      Settings.set('playSoundsStatus', this.playSoundsStatus);
+    }
+  },
+
+  computed: {
+    menuState() {
+      return (this.playSoundsStatus === true) ? "Disable Sounds" : "Enable Sounds";
+    }
+  }
+};
+
 // Exit Menu
 const exitMenu = {
   template: `<a class="settingsMenu__item" href="#" v-on:click="exit">Exit</a>`,
@@ -50,6 +72,7 @@ const logoutMenu = {
 
 module.exports = {
   notificationMenu: notificationMenu,
+  playSoundsMenu: playSoundsMenu,
   exitMenu: exitMenu,
   logoutMenu: logoutMenu
 };
