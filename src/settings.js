@@ -38,7 +38,7 @@ const SETTINGS = {
   NOTIFICATION_TYPES: NOTIFICATION_TYPES,
   window: {
     width: 420,
-    height: 520,
+    height: 540,
     resizable: false,
     movable: false,
     minimizable: false,

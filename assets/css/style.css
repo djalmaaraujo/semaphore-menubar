@@ -64,7 +64,7 @@ img {
 }
 
 .state__setupSubTitle span {
-  color: #be1818;
+  color: #f85418;
 }
 
 .state__setupTokenInput {
@@ -82,18 +82,18 @@ img {
 
 .state__setupTokenInputMessage {
   font-size: 0.9em;
-  color: #bf1919;
+  color: #f85418;
   position: relative;
   top: -20px;
 }
 
 .state__setupSubmit {
-  background-color: #8eb43f;
-  border: 2px solid #7fa138;
+  background-color: #19a974;
+  border: 2px solid #148a5e;
   color: white;
   text-align: center;
-  font-size: 1.5em;
-  margin: 0 auto 40px auto;
+  font-size: 1.2em;
+  margin: 0 auto 20px auto;
   font-weight: 600;
   display: block;
   padding: 15px 30px;
@@ -269,7 +269,7 @@ img {
   font-size: 0.9em;
   font-weight: 400;
   padding: 10px;
-  color: #8eb43f;
+  color: #19a974;
   text-decoration: none;
   display: block;
   border-bottom: 1px solid #f1f1f1;

@@ -18,11 +18,11 @@ Go to your Project Settings -> Notifications -> WebHooks -> + Add WebHook
 
 ## Download
 
-**Version 0.1.0**
+**Version 0.1.1**
 
-- [Download macOS](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.0/Semaphore.Menubar.app.zip)
-- [Download Windows 64](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.0/semaphore-menubar-win32-x64.zip)
-- [Download Linux 64](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.0/semaphore-menubar-linux-x64.zip)
+- [Download macOS](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.1/Semaphore.Menubar.app.zip)
+- [Download Windows 64](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.1/semaphore-menubar-win32-x64.zip)
+- [Download Linux 64](https://github.com/djalmaaraujo/semaphore-menubar/releases/download/0.1.1/semaphore-menubar-linux-x64.zip)
 
 ## Roadmap
 

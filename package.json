@@ -1,6 +1,6 @@
 {
   "name": "semaphore-menubar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "main.js",
   "dependencies": {
     "electron-config": "^0.2.1",
