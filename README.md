@@ -10,6 +10,8 @@ Go to your Project Settings -> Notifications -> WebHooks -> + Add WebHook
 
 <p align="center">
   <img src="https://github.com/djalmaaraujo/semaphore-menubar/blob/master/assets/screenshots/screenshot.png?raw=true" alt="Sublime's custom image"/>
+
+  <img src="https://github.com/djalmaaraujo/semaphore-menubar/blob/master/assets/screenshots/screenshot2.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
 * Supports Desktop Notifications from Builds (Passed, Failed, Stopped, Etc)
